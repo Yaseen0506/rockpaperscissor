@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissor</title>
+</head>
+<body>
+    <h1>Rock Paper Scissor</h1>
+    <script>
+        let playerScore = 0;
+        let computerScore = 0
+       function getComputerChoice()
+       {
+          const stonePaperScissor = ["rock","paper","scissor"]
+          let randomNumber = Math.floor(Math.random()*3) 
+          let computerMove = stonePaperScissor[randomNumber]
+          return computerMove
+       }
+
+       function getUserInput()
+       {
+          let userMove = prompt("Enter a Move")
+          let alteredUserMove = userMove.toLowerCase()
+          if(alteredUserMove != "rock" && alteredUserMove != "paper" && alteredUserMove != "scissor")
+          {
+            return null
+          }
+          else
+          {
+            return alteredUserMove
+          }
+       }
+
+       function gameRound(computerChoice,userChoice)
+       {
+           
+           if(computerChoice === userChoice)
+           {
+            return("The game is a tie")
+           }
+           else if(userChoice === "rock" && computerChoice === "paper")
+           {
+             computerScore++
+             return("Paper beats rock")
+           }
+           else if(userChoice === "rock" && computerChoice === "scissor")
+           {
+            playerScore++
+             return("Rock beats scissor")
+           }
+           else if(userChoice === "paper" && computerChoice === "rock")
+           {
+            playerScore++
+             return("Paper beats rock")
+           }
+           else if(userChoice === "paper" && computerChoice === "scissor")
+           {
+             computerScore++
+             return ("Scissor beats paper")
+           }
+           else if(userChoice === "scissor" && computerChoice === "rock")
+           {
+            computerScore++
+             return("Rock beats scissor")
+           }
+           else if(userChoice === "scissor" && computerChoice === "paper")
+           { 
+            playerScore++
+             return("Scissor beats paper")
+           }
+           
+    }
+       function game()
+       {
+         for(let i=0;i<5;i++)
+        {
+       let computerResult = getComputerChoice()
+       let userResult = getUserInput()
+        
+       if(userResult === null)
+       {
+        continue
+       }
+    console.log(`Round:${i+1}`)
+     console.log(gameRound(computerResult,userResult))
+      }
+      if(playerScore>computerScore)
+      {
+        console.log(`Player Score: ${playerScore} || Computer Score:${computerScore} - Player Wins`)
+      }
+      else if(computerScore>playerScore)
+      {
+        console.log(`Player Score: ${playerScore} || Computer Score:${computerScore} - Computer Wins`)
+      }
+      else
+      {
+        console.log(`Player Score: ${playerScore} || Computer Score:${computerScore} - Match Tied`)
+      }
+       }
+
+       game()
+         
+    </script>
+</body>
+</html>
