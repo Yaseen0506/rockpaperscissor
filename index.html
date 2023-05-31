@@ -4,104 +4,40 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="main.js" defer></script>
+    <link rel="stylesheet" href="style.css">
     <title>Rock Paper Scissor</title>
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap" rel="stylesheet">
+
 </head>
 <body>
-    <h1>Rock Paper Scissor</h1>
-    <script>
-        let playerScore = 0;
-        let computerScore = 0
-       function getComputerChoice()
-       {
-          const stonePaperScissor = ["rock","paper","scissor"]
-          let randomNumber = Math.floor(Math.random()*3) 
-          let computerMove = stonePaperScissor[randomNumber]
-          return computerMove
-       }
-
-       function getUserInput()
-       {
-          let userMove = prompt("Enter a Move")
-          let alteredUserMove = userMove.toLowerCase()
-          if(alteredUserMove != "rock" && alteredUserMove != "paper" && alteredUserMove != "scissor")
-          {
-            return null
-          }
-          else
-          {
-            return alteredUserMove
-          }
-       }
-
-       function gameRound(computerChoice,userChoice)
-       {
-           
-           if(computerChoice === userChoice)
-           {
-            return("The game is a tie")
-           }
-           else if(userChoice === "rock" && computerChoice === "paper")
-           {
-             computerScore++
-             return("Paper beats rock")
-           }
-           else if(userChoice === "rock" && computerChoice === "scissor")
-           {
-            playerScore++
-             return("Rock beats scissor")
-           }
-           else if(userChoice === "paper" && computerChoice === "rock")
-           {
-            playerScore++
-             return("Paper beats rock")
-           }
-           else if(userChoice === "paper" && computerChoice === "scissor")
-           {
-             computerScore++
-             return ("Scissor beats paper")
-           }
-           else if(userChoice === "scissor" && computerChoice === "rock")
-           {
-            computerScore++
-             return("Rock beats scissor")
-           }
-           else if(userChoice === "scissor" && computerChoice === "paper")
-           { 
-            playerScore++
-             return("Scissor beats paper")
-           }
-           
-    }
-       function game()
-       {
-         for(let i=0;i<5;i++)
-        {
-       let computerResult = getComputerChoice()
-       let userResult = getUserInput()
-        
-       if(userResult === null)
-       {
-        continue
-       }
-    console.log(`Round:${i+1}`)
-     console.log(gameRound(computerResult,userResult))
-      }
-      if(playerScore>computerScore)
-      {
-        console.log(`Player Score: ${playerScore} || Computer Score:${computerScore} - Player Wins`)
-      }
-      else if(computerScore>playerScore)
-      {
-        console.log(`Player Score: ${playerScore} || Computer Score:${computerScore} - Computer Wins`)
-      }
-      else
-      {
-        console.log(`Player Score: ${playerScore} || Computer Score:${computerScore} - Match Tied`)
-      }
-       }
-
-       game()
-         
-    </script>
+  <header>
+    <h1>ROCK PAPER SCISSOR</h1>
+  </header>
+  <section class="score">
+    <div class="container">
+    <div class="player-score">
+      <h3 class="scorer">Player</h3>
+      <p class="scored" id="p-score">0</p>
+    </div>
+    <div class="computer-score">
+      <h3 class="scorer">Computer</h3>
+      <p class="scored" id="c-score">0</p>
+    </div>
+    </div>
+  </section>
+  <section class="moves">
+    <button class="rock btn" id="rock">Rock</button>
+    <button class="paper btn" id="paper">Paper</button>
+    <button class="scissor btn" id="scissor">Scissor</button>
+  </section>
+  <section class="result">
+    <h2 id="result-area"></h2>
+    <h4 id="end-message"></h4>
+    
+  </section>
 </body>
 </html>
